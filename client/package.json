@@ -10,7 +10,9 @@
     "@tanstack/react-query": "^5.80.10",
     "axios": "^1.6.0",
     "jspdf": "^3.0.1",
+    "lucide-react": "^0.518.0",
     "npm-check": "^6.0.1",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "wouter": "^3.7.1"
