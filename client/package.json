@@ -20,7 +20,7 @@
     "clsx": "^2.1.1",
     "jspdf": "^3.0.1",
     "lucide-react": "^0.518.0",
-    "npm-check": "^3.2.10",
+    "npm-check": "^6.0.1",
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
