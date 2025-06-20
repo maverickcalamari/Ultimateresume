@@ -1,0 +1,29 @@
+
+import { useEffect, useState } from "react";
+
+export function useAuth() {
+  const [user, setUser] = useState(null);
+
+  const fetchUser = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+    const res = await fetch("/api/me", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      setUser(data);
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  return { user, fetchUser, logout };
+}
