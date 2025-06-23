@@ -79,4 +79,3 @@ export default function ResumeBuilder() {
       {/* Ensure there is NO PDF export logic or buttons */}
     </Card>
   );
-}
