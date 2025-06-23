@@ -14,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileText, Upload, Wand2, Crown, User, LogOut, Settings } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useAuth, apiRequest } from "@/lib/auth";
-import pierlineLogoPath from "../assets/Logo.PNG";
+import pierlineLogoPath from "../assets/Logo.png";
 interface Resume {
   id: number;
   filename: string;
