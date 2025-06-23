@@ -6,6 +6,20 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import React from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+export default function ResumeBuilder() {
+  return (
+    <div className="space-y-4">
+      <h3 className="text-xl font-semibold">Build Your Resume</h3>
+      <Input placeholder="Enter your full name" />
+      <Input placeholder="Enter your headline or summary" />
+      <Button>Generate Resume Preview</Button>
+    </div>
+  );
+}
 
 export default function ResumeBuilder() {
   // ... other state and logic
