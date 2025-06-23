@@ -56,7 +56,8 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border; /* or another class like border-gray-200 */
+
   }
 
   body {
