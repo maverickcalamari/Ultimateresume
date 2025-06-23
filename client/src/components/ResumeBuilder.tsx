@@ -20,12 +20,6 @@ export default function ResumeBuilder() {
     </div>
   );
 }
-
-export default function ResumeBuilder() {
-  // ... other state and logic
-
-  // Assume generatedResume, showPreview, setShowPreview, personalInfo, etc. exist
-
   const downloadResume = () => {
     if (!generatedResume) return;
     const blob = new Blob([generatedResume], { type: 'text/plain' });
