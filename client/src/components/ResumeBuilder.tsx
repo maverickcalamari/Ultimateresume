@@ -1,32 +1,37 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Download, Eye, FileText, Plus, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import React from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Download, Eye, FileText } from "lucide-react";
 
 export default function ResumeBuilder() {
-  return (
-    <div className="space-y-4">
-      <h3 className="text-xl font-semibold">Build Your Resume</h3>
-      <Input placeholder="Enter your full name" />
-      <Input placeholder="Enter your headline or summary" />
-      <Button>Generate Resume Preview</Button>
-    </div>
-  );
-}
+  const [showPreview, setShowPreview] = useState(false);
+  const [generatedResume, setGeneratedResume] = useState<string | null>(null);
+  const [personalInfo, setPersonalInfo] = useState({
+    fullName: "",
+    headline: "",
+    summary: "",
+  });
+
+  const handleGenerate = () => {
+    const resumeText = `
+${personalInfo.fullName}
+${personalInfo.headline}
+
+${personalInfo.summary}
+`;
+    setGeneratedResume(resumeText);
+    setShowPreview(true);
+  };
+
   const downloadResume = () => {
     if (!generatedResume) return;
-    const blob = new Blob([generatedResume], { type: 'text/plain' });
+    const blob = new Blob([generatedResume], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `${personalInfo.fullName.replace(/\s+/g, '_')}_Resume.txt`;
+    a.download = `${personalInfo.fullName.replace(/\s+/g, "_")}_Resume.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -63,19 +68,36 @@ export default function ResumeBuilder() {
         </CardHeader>
         <CardContent>
           <div className="bg-white border border-gray-200 rounded-lg p-6 max-h-96 overflow-y-auto">
-            <pre className="whitespace-pre-wrap font-mono text-sm">
-              {generatedResume}
-            </pre>
+            <pre className="whitespace-pre-wrap font-mono text-sm">{generatedResume}</pre>
           </div>
         </CardContent>
       </Card>
     );
   }
 
-  // ... rest of ResumeBuilder form rendering for editing/building
   return (
     <Card className="card-professional">
-      {/* ...rest of the ResumeBuilder editor code here */}
-      {/* Ensure there is NO PDF export logic or buttons */}
+      <CardHeader>
+        <CardTitle className="text-xl font-semibold">Build Your Resume</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <Input
+          placeholder="Full Name"
+          value={personalInfo.fullName}
+          onChange={(e) => setPersonalInfo({ ...personalInfo, fullName: e.target.value })}
+        />
+        <Input
+          placeholder="Headline (e.g. Frontend Developer)"
+          value={personalInfo.headline}
+          onChange={(e) => setPersonalInfo({ ...personalInfo, headline: e.target.value })}
+        />
+        <Textarea
+          placeholder="Summary or objective..."
+          value={personalInfo.summary}
+          onChange={(e) => setPersonalInfo({ ...personalInfo, summary: e.target.value })}
+        />
+        <Button onClick={handleGenerate}>Generate Resume Preview</Button>
+      </CardContent>
     </Card>
   );
+}
