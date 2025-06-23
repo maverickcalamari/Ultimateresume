@@ -12,24 +12,6 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export default function TemplateGenerator() {
-  return (
-    <div className="space-y-4 mt-4">
-      <h3 className="text-lg font-semibold">Available Templates</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Card className="p-4">
-          <p>Modern Professional</p>
-          <Button className="mt-2" variant="outline">Download</Button>
-        </Card>
-        <Card className="p-4">
-          <p>Creative Minimalist</p>
-          <Button className="mt-2" variant="outline">Download</Button>
-        </Card>
-      </div>
-    </div>
-  );
-}
-
 interface ResumeTemplate {
   id: string;
   industry: string;
